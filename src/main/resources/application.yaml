@@ -1,0 +1,17 @@
+spring:
+  mail:
+    host: smtp.test.com
+    port: 587
+    username: email@test.com
+    password: password
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
+
+logging:
+  file:
+    name: logs/fgi-notifier-server.log
+
+################################ Notifier properties ################################
+notifier:
+  emails: [ "test@test.com" ]
+  cron: ["0 * * ? * *"]

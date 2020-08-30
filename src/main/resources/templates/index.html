@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Fear and Greed Index Notifier</title>
+</head>
+<body>
+    <h1>Fear and Greed Index Notifier</h1>
+
+    <ul>
+        <li>Now: <span th:text="${fearGreedData.now}"></span> <span th:text="${fearGreedData.nowPercentage}"></span></li>
+        <li>Previous close: <span th:text="${fearGreedData.prev}"></span> <span th:text="${fearGreedData.prevPercentage}"></span></li>
+        <li>A week ago: <span th:text="${fearGreedData.week}"></span> <span th:text="${fearGreedData.weekPercentage}"></span></li>
+        <li>A month ago: <span th:text="${fearGreedData.month}"></span> <span th:text="${fearGreedData.monthPercentage}"></span></li>
+        <li>A year ago: <span th:text="${fearGreedData.year}"></span> <span th:text="${fearGreedData.yearPercentage}"></span></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p th:text="#{greetings(${email})}"></p>
+    <p>
+        <span th:text="#{body.subject}"></span><br />
+        <span th:text="#{current.level(${currentLevel}, ${currentValue})}"></span><br />
+        <span th:text="#{previous.level(${previousLevel}, ${previousValue})}"></span><br />
+    </p>
+    <p>
+        <span th:text="#{regards}"></span><br />
+        <em th:text="#{signature}"></em> <br />
+    </p>
+</body>
+</html>
