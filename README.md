@@ -26,3 +26,4 @@ FGI-Notifier is a web application that collects data from Fear Greed Index and n
 * Lombok
 * Jsoup
 * Mockito-kotlin
+* Thymeleaf
