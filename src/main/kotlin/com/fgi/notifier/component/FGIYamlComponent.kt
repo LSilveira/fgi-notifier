@@ -2,7 +2,6 @@ package com.fgi.notifier.component
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fgi.notifier.model.FearGreedData
-import com.fgi.notifier.service.impl.FearGreedDataServiceImpl
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -29,7 +28,6 @@ class FGIYamlComponent
             return null
         }
 
-        logger.info("File was read!")
         return mapper.readValue(file, FearGreedData::class.java)
     }
 
