@@ -11,6 +11,15 @@ logging:
   file:
     name: logs/fgi-notifier-server.log
 
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include:
+          - info
+          - health
+          - scheduledtasks
+
 ################################ Notifier properties ################################
 notifier:
   emails: [ "test@test.com" ]
