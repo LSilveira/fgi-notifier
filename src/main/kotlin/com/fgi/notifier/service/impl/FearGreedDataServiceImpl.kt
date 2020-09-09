@@ -5,6 +5,7 @@ import com.fgi.notifier.component.WebCrawler
 import com.fgi.notifier.config.NotifierConfig
 import com.fgi.notifier.model.EmailMessage
 import com.fgi.notifier.model.EmailTemplate
+import com.fgi.notifier.model.FGIInfo
 import com.fgi.notifier.model.FearGreedData
 import com.fgi.notifier.service.FearGreedDataService
 import com.fgi.notifier.util.CrawlerConstants
@@ -36,6 +37,7 @@ class FearGreedDataServiceImpl : FearGreedDataService
     {
         val previousFearGreedData = fGIYamlComponent.readConfig()
         val latestFearGreedData = getLatestData()
+        fGIYamlComponent.writeConfig(latestFearGreedData)
 
         if (previousFearGreedData == null || latestFearGreedData == previousFearGreedData)
         {
@@ -44,11 +46,23 @@ class FearGreedDataServiceImpl : FearGreedDataService
         }
 
         val templateType = EmailTemplate.DEFAULT
-        fGIYamlComponent.writeConfig(latestFearGreedData)
 
         logger.info("FGI updated!! Email being sent!")
         return notifierConfig.getEmails().map { EmailMessage(it, "Fear & Greed Index change",
                 templateType, latestFearGreedData.now!!, latestFearGreedData.nowPercentage!!,
                 previousFearGreedData.now!!, previousFearGreedData.nowPercentage!!) }
+    }
+
+    override fun getFGIInfo(): FGIInfo
+    {
+        val previousFearGreedData = fGIYamlComponent.readConfig()
+        val latestFearGreedData = getLatestData()
+
+        return FGIInfo(
+                previousFearGreedData?.now?:"",
+                previousFearGreedData?.nowPercentage?:0,
+                latestFearGreedData.now?:"",
+                latestFearGreedData.nowPercentage?:0
+        )
     }
 }
